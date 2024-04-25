@@ -1,5 +1,3 @@
-![alt text](image.png)
-
 ## Modelo de DB
 
 ```
