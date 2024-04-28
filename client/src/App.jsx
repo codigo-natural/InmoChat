@@ -1,9 +1,7 @@
-import './App.css'
-
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">InmoChat</h1>
+      <h1>InmoChat</h1>
     </>
   )
 }
