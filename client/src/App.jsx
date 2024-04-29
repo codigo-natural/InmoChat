@@ -1,7 +1,10 @@
+import './App.css'
+import { HomePage } from './routes/homePage'
+
 function App() {
   return (
     <>
-      <h1>InmoChat</h1>
+      <HomePage />
     </>
   )
 }
