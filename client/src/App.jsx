@@ -1,11 +1,21 @@
-import './App.css'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { HomePage } from './routes/homePage'
+import { Layout } from './routes/layout'
 
 function App() {
-  return (
-    <>
-      <h1 className="text-3xl font-bold underline">InmoChat</h1>
-    </>
-  )
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <HomePage />
+        }
+      ]
+    }
+  ])
+  return <RouterProvider router={router} />
 }
 
 export default App
