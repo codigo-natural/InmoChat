@@ -1,5 +1,6 @@
 // import { useContext } from 'react'
 // import { AuthContext } from '../../context/authContext'
+import { SearchBar } from "../../components/SearchBar"
 import './homePage.scss'
 
 export const HomePage = () => {
@@ -17,7 +18,7 @@ export const HomePage = () => {
             facilis id pariatur fugit quos laudantium temporibus dolor ea
             repellat provident impedit!
           </p>
-          {/* <SearcBar /> */}
+          <SearchBar />
           <div className="boxes">
             <div className="box">
               <h1>16+</h1>
@@ -35,7 +36,7 @@ export const HomePage = () => {
         </div>
       </div>
       <div className='imgContainer'>
-        <img src="../../assets/bg.png" alt="" />
+        <img src="/bg.png" alt="" />
       </div>
     </div>
   )
