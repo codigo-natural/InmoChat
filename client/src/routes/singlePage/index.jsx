@@ -1,7 +1,7 @@
 import './singlePage.scss'
 
-export const SinglePAge = () => {
+export const SinglePage = () => {
   return (
-    <div>SinglePAge</div>
+    <div>SinglePage</div>
   )
 }
