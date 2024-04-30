@@ -1,6 +1,6 @@
 import './listPage.scss'
 
-export const listPage = () => {
+export const ListPage = () => {
   return (
     <div>List Page</div>
   )
