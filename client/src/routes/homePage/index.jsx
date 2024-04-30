@@ -1,5 +1,7 @@
 // import { useContext } from 'react'
 // import { AuthContext } from '../../context/authContext'
+// import { useContext } from 'react'
+// import { AuthContext } from '../../context/authContext'
 import { SearchBar } from "../../components/SearchBar"
 import './homePage.scss'
 
@@ -36,7 +38,7 @@ export const HomePage = () => {
         </div>
       </div>
       <div className='imgContainer'>
-        <img src="/bg.png" alt="" />
+        <img src="../../assets/bg.png" alt="" />
       </div>
     </div>
   )
