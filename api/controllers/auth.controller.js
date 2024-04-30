@@ -4,25 +4,27 @@ import prisma from "../lib/prisma.js";
 
 export const register = async (req, res) => {
   const { username, email, password } = req.body;
-  // * has password
-  const hashedPassword = await bcrypt.hash(password, 10);
-  console.log(hashedPassword);
 
-  // * create a new user and save to db
-  const newUser = await prisma.user.create({
-    data: {
-      username,
-      email,
-      password: hashedPassword,
-    },
-  });
   try {
+    // * has password
+    const hashedPassword = await bcrypt.hash(password, 10);
+    console.log(hashedPassword);
+
+    // * create a new user and save to db
+    const newUser = await prisma.user.create({
+      data: {
+        username,
+        email,
+        password: hashedPassword,
+      },
+    });
     console.log(newUser);
 
     res.status(201).json({ message: "user creted succesfully" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Failed to create user!" });
+    console.log(error);
   }
 };
 
@@ -53,6 +55,8 @@ export const login = async (req, res) => {
       }
     );
 
+    const { password: userPassword, ...userInfo } = user;
+
     res
       .cookie("token", token, {
         httpOnly: true,
@@ -60,9 +64,8 @@ export const login = async (req, res) => {
         maxAge: age,
       })
       .status(200)
-      .json({ message: "User logged in successfully!" });
+      .json(userInfo);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Failed to login user!" });
   }
 };
