@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 // Create a context for managing authentication state
 export const AuthContext = createContext();
+console.log(AuthContext)
 
 // Provider component for the authentication context
 export const AuthContextProvider = ({ children }) => {
@@ -9,7 +10,7 @@ export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
   );
-
+  
   // Function to update the current user
   const updateUser = (data) => {
     setCurrentUser(data);
@@ -19,6 +20,7 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(currentUser));
   }, [currentUser])
+  console.log(currentUser)
 
   // Render the AuthContext.Provider with currentUser and updateUser values
   return (

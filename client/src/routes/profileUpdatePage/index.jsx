@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import './profileUpdatePage.scss'
 import { AuthContext } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
@@ -6,7 +6,7 @@ import apiRequest from '../../lib/apiRequest'
 import { UploadWidget } from "../../components/UploadWidget"
 
 export const ProfileUpdatePage = () => {
-  const { currentUser, updateUser } = useState(AuthContext)
+  const { currentUser, updateUser } = useContext(AuthContext)
   const [error, setError] = useState("")
   const [avatar, setAvatar] = useState([])
 
@@ -45,7 +45,7 @@ export const ProfileUpdatePage = () => {
               type="text"
               name="username"
               id="username"
-            // defaultValue={currentUser.username}
+              defaultValue={currentUser?.username}
             />
           </div>
           <div className="item">
@@ -54,7 +54,7 @@ export const ProfileUpdatePage = () => {
               type="email"
               name="email"
               id="email"
-            // defaultValue={currentUser.email}
+              defaultValue={currentUser?.email}
             />
           </div>
           <div className="item">
@@ -71,10 +71,9 @@ export const ProfileUpdatePage = () => {
       </div>
       <div className="sideContainer">
         <img
-          // src={avatar[0] ||
-          //   currentUser.avatar ||
-          //   "/noavatar.jpg"}
-          src='/noavatar.jpg'
+          src={avatar[0] ||
+            currentUser.avatar ||
+            "/noavatar.jpg"}
           alt="avatar"
           className='avatar'
         />
