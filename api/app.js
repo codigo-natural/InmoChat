@@ -4,6 +4,7 @@ import express from "express";
 import authRoute from "./routes/auth.route.js";
 import postRoute from "./routes/post.route.js";
 import testRoute from "./routes/test.route.js";
+import userRoute from "./routes/user.route.js";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(cookieParser());
 app.use("/api/posts", postRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/test", testRoute);
+app.use("/api/users", userRoute);
 
 app.listen(8080, () => {
   console.log("Server started on port 8080");
