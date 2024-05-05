@@ -1,4 +1,4 @@
-import { Suspense, useContext } from "react"
+import { Suspense, useContext, useEffect } from "react"
 import { Await, Link, useLoaderData, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext"
 import apiRequest from "../../lib/apiRequest"
@@ -11,6 +11,12 @@ export const ProfilePage = () => {
 
   const navigate = useNavigate()
 
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/login")
+    }
+  }, [currentUser, navigate])
+
   const handleLogout = async () => {
     try {
       await apiRequest.post("/auth/logout")
@@ -22,7 +28,7 @@ export const ProfilePage = () => {
   }
 
   return (
-    <div className="profilePage">
+    currentUser && <div className="profilePage">
       <div className="details">
         <div className="wrapper">
           <div className="title">
