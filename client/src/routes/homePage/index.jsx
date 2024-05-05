@@ -6,8 +6,6 @@ import './homePage.scss'
 export const HomePage = () => {
   const { currentUser } = useContext(AuthContext)
 
-  console.log(currentUser)
-
   return (
     <div className='homePage'>
       <div className="textContainer">
@@ -38,7 +36,7 @@ export const HomePage = () => {
         </div>
       </div>
       <div className='imgContainer'>
-        <img src="/bg.png" alt="" />
+        <img src="../../assets/bg.png" alt="" />
       </div>
     </div>
   )
