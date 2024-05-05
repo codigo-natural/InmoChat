@@ -1,10 +1,12 @@
-// import { useContext } from 'react'
-// import { AuthContext } from '../../context/authContext'
+import { useContext } from "react"
 import { SearchBar } from "../../components/SearchBar"
+import { AuthContext } from "../../context/AuthContext"
 import './homePage.scss'
 
 export const HomePage = () => {
-  // const { currentUser } = useContext(AuthContext)
+  const { currentUser } = useContext(AuthContext)
+
+  console.log(currentUser)
 
   return (
     <div className='homePage'>
