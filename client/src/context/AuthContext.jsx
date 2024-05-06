@@ -2,7 +2,6 @@ import { createContext, useEffect, useState } from "react";
 
 // Create a context for managing authentication state
 export const AuthContext = createContext();
-console.log(AuthContext)
 
 // Provider component for the authentication context
 export const AuthContextProvider = ({ children }) => {
