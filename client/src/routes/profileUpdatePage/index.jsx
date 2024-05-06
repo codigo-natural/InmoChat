@@ -79,8 +79,8 @@ export const ProfileUpdatePage = () => {
         />
         <UploadWidget
           uwConfig={{
-            cloudName: "lamadev",
-            uploadPreset: "estate",
+            cloudName: "inmochat",
+            uploadPreset: "inmochat",
             multiple: false,
             maxImageFileSize: 2000000,
             folder: "avatars",
