@@ -12,10 +12,10 @@ app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/api/posts", postRoute);
 app.use("/api/auth", authRoute);
-app.use("/api/test", testRoute);
 app.use("/api/users", userRoute);
+app.use("/api/posts", postRoute);
+app.use("/api/test", testRoute);
 
 app.listen(8080, () => {
   console.log("Server started on port 8080");
