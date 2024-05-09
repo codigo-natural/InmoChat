@@ -1,5 +1,4 @@
 import express from "express";
-import { login, logout, register } from "../controllers/auth.controller.js";
 import {
   deleteUser,
   getUser,
@@ -16,5 +15,6 @@ router.get("/:id", verifyToken, getUser);
 router.put("/:id", verifyToken, updateUser);
 router.delete("/:id", verifyToken, deleteUser);
 router.post("/save", verifyToken, savePost);
+router.post("/profilePosts", verifyToken, profilePost);
 
 export default router;
