@@ -1,5 +1,5 @@
 import { useState } from 'react'
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import './searchBar.scss'
 
 const types = ["buy", "rent"]
@@ -56,9 +56,9 @@ export const SearchBar = () => {
           placeholder='Max Price'
           onChange={handleChange}
         />
-        {/* <Link to={`/list?type=${query.type}&city=${query.city}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}`} > */}
+        <Link to={`/list?type=${query.type}&city=${query.city}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}`} >
           <button><img src="/search.png" alt="" /></button>
-        {/* </Link> */}
+        </Link>
       </form>
     </div>
   )
