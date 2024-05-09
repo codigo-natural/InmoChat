@@ -13,10 +13,7 @@ export const ListPage = () => {
       <div className="listContainer">
         <div className="wrapper">
           <Filter />
-          {data.map(item => (
-            <Card key={item.id} item={item} />
-          ))}
-          {/* <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<p>Loading...</p>}>
             <Await
               resolve={data.postResponse}
               errorElement={<p>Error loading posts!</p>}
@@ -27,19 +24,19 @@ export const ListPage = () => {
                 ))
               }
             </Await>
-          </Suspense> */}
+          </Suspense>
         </div>
       </div>
       <div className="mapContainer">
-        <Map items={data} />
-        {/* <Suspense fallback={<p>Loading...</p>}>
+        {(postResponse) => <Map items={postResponse.data} />}
+        <Suspense fallback={<p>Loading...</p>}>
           <Await
             resolve={data.postResponse}
             errorElement={<p>Error loading posts!</p>}
           >
             {(postResponse) => <Map items={postResponse.data} />}
           </Await>
-        </Suspense> */}
+        </Suspense>
       </div>
     </div>
   );

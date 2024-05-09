@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import './filter.scss'
 import { useSearchParams } from 'react-router-dom';
+import './filter.scss';
 
 export const Filter = () => {
   const [searchParams, setSearchParams] = useSearchParams();
