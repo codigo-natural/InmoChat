@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './card.scss'
 
+/* eslint-disable react/prop-types */
 export const Card = ({ item }) => {
   return (
     <div className="card">
