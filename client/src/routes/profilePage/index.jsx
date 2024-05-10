@@ -1,5 +1,6 @@
 import { Suspense, useContext, useEffect } from "react"
 import { Await, Link, useLoaderData, useNavigate } from "react-router-dom"
+import { List } from "../../components/List"
 import { AuthContext } from "../../context/AuthContext"
 import apiRequest from "../../lib/apiRequest"
 import './profilePage.scss'
@@ -58,11 +59,11 @@ export const ProfilePage = () => {
           </div>
           <Suspense fallback={<p>Loading...</p>}>
             <Await
-              // resolve={data.postResponse}
+              resolve={data.postResponse}
               errorElement={<p>Error loading posts!</p>}
             >
               <p>Post Response List</p>
-              {/* {(postResponse) => <List posts={postResponse.data.userPosts} />} */}
+              {(postResponse) => <List posts={postResponse.data.userPosts} />}
             </Await>
           </Suspense>
           <div className="title">
@@ -72,11 +73,11 @@ export const ProfilePage = () => {
             fallback={<p>Loading...</p>}
           >
             <Await
-              // resolve={data.postResponse}
+              resolve={data.postResponse}
               errorElement={<p>Error loading posts</p>}
             >
               <p>Post Response Chat</p>
-              {/* {(postResponse) => <Chat chats={chatResponse.data} />} */}
+              {(postResponse) => <List posts={postResponse.data.savedPosts} />}
             </Await>
           </Suspense>
         </div>
