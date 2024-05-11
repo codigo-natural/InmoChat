@@ -8,15 +8,15 @@ export const singlePageLoader = async ({ request, params }) => {
 
 export const listPageLoader = async ({ request, params }) => {
   const query = request.url.split("?")[1];
-  const postResponse = await apiRequest("/posts?" + query);
+  const postPromise = await apiRequest("/posts?" + query);
   return defer({
-    postResponse: postResponse,
+    postResponse: postPromise,
   });
 };
 
 export const profilePageLoader = async () => {
-  const postResponse = await apiRequest("/users/profilePosts");
+  const postPromise = await apiRequest("/users/profilePosts");
   return defer({
-    postResponse: postResponse,
+    postResponse: postPromise,
   });
 };

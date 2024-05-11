@@ -62,7 +62,6 @@ export const ProfilePage = () => {
               resolve={data.postResponse}
               errorElement={<p>Error loading posts!</p>}
             >
-              <p>Post Response List</p>
               {(postResponse) => <List posts={postResponse.data.userPosts} />}
             </Await>
           </Suspense>
@@ -76,7 +75,6 @@ export const ProfilePage = () => {
               resolve={data.postResponse}
               errorElement={<p>Error loading posts</p>}
             >
-              <p>Post Response Chat</p>
               {(postResponse) => <List posts={postResponse.data.savedPosts} />}
             </Await>
           </Suspense>
