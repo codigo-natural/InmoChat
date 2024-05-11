@@ -13,15 +13,14 @@ export const getPosts = async (req, res) => {
         property: query.property || undefined,
         bedroom: parseInt(query.bedroom) || undefined,
         price: {
-          gte: parseInt(query.minPrice) || 0,
-          lte: parseInt(query.maxPrice) || 1000000,
+          gte: parseInt(query.minPrice) || undefined,
+          lte: parseInt(query.maxPrice) || undefined,
         },
       },
     });
 
     res.status(200).json(posts);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Failed to get all posts" });
   }
 };
@@ -30,11 +29,11 @@ export const getPost = async (req, res) => {
   const id = req.params.id;
   try {
     const post = await prisma.post.findUnique({
-      ehere: { id },
+      where: { id },
       include: {
         postDetail: true,
         user: {
-          selected: {
+          select: {
             username: true,
             avatar: true,
           },
@@ -45,7 +44,7 @@ export const getPost = async (req, res) => {
     const token = req.cookies?.token;
 
     if (token) {
-      jwt.verify(token, proces.env.JWT_SECRET_KEY, async (err, payload) => {
+      jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, payload) => {
         if (!err) {
           const saved = await prisma.savedPost.findUnique({
             where: {
@@ -56,12 +55,14 @@ export const getPost = async (req, res) => {
             },
           });
           res.status(200).json({ ...post, isSaved: saved ? true : false });
+        } else {
+          res.status(200).json({ ...post, isSaved: false }); // Mover esta línea dentro del bloque 'else'
         }
       });
+    } else {
+      res.status(200).json({ ...post, isSaved: false });
     }
-    res.status(200).json({ ...post, isSaved: false });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Failed to get post" });
   }
 };
