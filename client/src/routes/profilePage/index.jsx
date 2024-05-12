@@ -4,6 +4,7 @@ import { List } from "../../components/List"
 import { AuthContext } from "../../context/AuthContext"
 import apiRequest from "../../lib/apiRequest"
 import './profilePage.scss'
+import { Chat } from "../../components/Chat"
 
 export const ProfilePage = () => {
   const data = useLoaderData()
@@ -76,6 +77,18 @@ export const ProfilePage = () => {
               errorElement={<p>Error loading posts</p>}
             >
               {(postResponse) => <List posts={postResponse.data.savedPosts} />}
+            </Await>
+          </Suspense>
+        </div>
+      </div>
+      <div className="chatContainer">
+        <div className="wrapper">
+          <Suspense fallback={<p>Loading</p>}>
+            <Await
+              resolve={data.chatResponse}
+              errorElement={<p>Error loading chats!</p>}
+            >
+              {(chatResponse) => <Chat chats={chatResponse.data} />}
             </Await>
           </Suspense>
         </div>
