@@ -4,6 +4,7 @@ import { createContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
 
 // Provider component for the authentication context
+/* eslint-disable react/prop-types */
 export const AuthContextProvider = ({ children }) => {
   // State to store the current user, fetched from localStorage or null if not found
   const [currentUser, setCurrentUser] = useState(
