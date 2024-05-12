@@ -6,7 +6,6 @@ export const getUsers = async (req, res) => {
     const users = await prisma.user.findMany();
     res.status(200).json(users);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Failed to get users!" });
   }
 };
@@ -18,7 +17,6 @@ export const getUser = async (req, res) => {
     });
     res.status(200).json(user);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Failed to get user!" });
   }
 };
@@ -50,7 +48,6 @@ export const updateUser = async (req, res) => {
 
     res.status(200).json(rest);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Failed to update user!" });
   }
 };
@@ -70,7 +67,6 @@ export const deleteUser = async (req, res) => {
     });
     res.status(200).json({ message: "User deleted" });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Failed to delete user!" });
   }
 };
@@ -126,10 +122,8 @@ export const profilePosts = async (req, res) => {
     });
 
     const savedPosts = saved.map((item) => item.post);
-    console.log(savedPosts)
     res.status(200).json({ userPosts, savedPosts });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Failed to get profile posts!" });
   }
 };
