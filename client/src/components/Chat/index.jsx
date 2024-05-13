@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/AuthContext'
 import { SocketContext } from '../../context/SocketContext'
 import apiRequest from '../../lib/apiRequest'
 import './chat.scss'
+import { useNotificationStore } from '../../lib/notificationStore'
 
 /* eslint-disable react/prop-types */
 export const Chat = ({ chats }) => {
@@ -13,6 +14,8 @@ export const Chat = ({ chats }) => {
 
   const messageEndRef = useRef();
 
+  const decrease = useNotificationStore((state) => state.decrease)
+
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [chat])
@@ -20,6 +23,9 @@ export const Chat = ({ chats }) => {
   const handleOpenChat = async (id, receiver) => {
     try {
       const res = await apiRequest("/chats/" + id)
+      if(!res.data.seenBy.includes(currentUser.id)) {
+        decrease()
+      }
 
       setChat({ ...res.data, receiver })
     } catch (error) {
@@ -91,7 +97,7 @@ export const Chat = ({ chats }) => {
           </div>
         ))}
       </div>
-      {chat &&  (
+      {chat && (
         <div className="chatBox">
           <div className="top">
             <div className="user">
